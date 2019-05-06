@@ -1,2 +1,16 @@
-<h1>Task list</h1>
+<% if logged_in? %>
+    <%= form_with(model: @task, local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= f.text_area :status %>
+      <%= f.submit "task" %>
+    <% end %>
+    
+    <%= render "tasks/tasks", tasks: @tasks %>
+    
+<% else %>
+  <h1>Task list</h1>
+<%= link_to "Login", login_path %>
 <%= link_to "Sign up now!", signup_path %>
+
+<% end %>
+
