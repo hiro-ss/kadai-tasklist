@@ -5,7 +5,11 @@
       <%= f.submit "task" %>
     <% end %>
     
-    <%= render "tasks/tasks", tasks: @tasks %>
+ <ul>
+   <% @tasks.each do |task| %>
+    <li><%= link_to task.id, task %> : <%= task.content %> <%= task.status %></li>
+   <% end %>
+ </ul>
     
 <% else %>
   <h1>Task list</h1>
